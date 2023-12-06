@@ -3,6 +3,7 @@ package ru.practicum.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import ru.practicum.dto.marker.Marker;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 public class HitDto {
-
+    @NotNull(groups = Marker.OnUpdate.class)
     private Long id;
 
     @NotNull(message = "app cannot be empty.")
