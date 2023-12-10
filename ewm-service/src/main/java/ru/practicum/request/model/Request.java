@@ -7,14 +7,11 @@ import ru.practicum.enums.Status;
 import ru.practicum.event.model.Event;
 import ru.practicum.user.model.User;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
-
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

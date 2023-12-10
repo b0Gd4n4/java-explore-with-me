@@ -7,15 +7,12 @@ import ru.practicum.category.model.Category;
 import ru.practicum.enums.State;
 import ru.practicum.user.model.User;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 
-
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
