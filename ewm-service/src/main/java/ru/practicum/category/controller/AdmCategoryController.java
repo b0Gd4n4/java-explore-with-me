@@ -19,7 +19,7 @@ public class AdmCategoryController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public CategoryDto createCategory(@Valid @RequestBody CategoryDto categoryDto) {
+    public CategoryDto addCategory(@Valid @RequestBody CategoryDto categoryDto) {
 
         log.info("Add Category {} ", categoryDto.getName());
         return categoryService.createCategory(categoryDto);

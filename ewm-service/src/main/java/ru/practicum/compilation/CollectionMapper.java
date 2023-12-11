@@ -7,7 +7,6 @@ import ru.practicum.compilation.model.Compilation;
 import ru.practicum.event.EventMapper;
 import ru.practicum.event.dto.EventShortDto;
 
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,10 +30,10 @@ public class CollectionMapper {
                 .build();
     }
 
-    public Compilation returnCompilation(CompilationCreateDto compilationNewDto) {
+    public Compilation returnCompilation(CompilationCreateDto compilationCreateDto) {
         return Compilation.builder()
-                .title(compilationNewDto.getTitle())
-                .pinned(compilationNewDto.getPinned())
+                .title(compilationCreateDto.getTitle())
+                .pinned(compilationCreateDto.getPinned())
                 .build();
     }
 

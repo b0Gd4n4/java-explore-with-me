@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-
-
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -27,7 +25,7 @@ public class HitController {
     public void addHit(@Valid @RequestBody HitDto hitDto) {
 
         log.info("Hit created");
-        hitService.addHit(hitDto);
+        hitService.createHit(hitDto);
     }
 
     @GetMapping("/stats")

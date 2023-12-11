@@ -19,8 +19,8 @@ public class RequestController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public RequestDto createRequest(@PathVariable Long userId,
-                                    @RequestParam Long eventId) {
+    public RequestDto addRequest(@PathVariable Long userId,
+                                 @RequestParam Long eventId) {
 
         log.info("User id {} added request for Event id {}.", userId, eventId);
         return requestService.createRequest(userId, eventId);

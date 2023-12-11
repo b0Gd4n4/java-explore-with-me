@@ -1,7 +1,7 @@
 package ru.practicum.user.service;
 
-import lombok.extern.slf4j.Slf4j;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,7 +10,6 @@ import ru.practicum.user.UserMapper;
 import ru.practicum.user.dto.UserDto;
 import ru.practicum.user.model.User;
 import ru.practicum.user.repository.UserRepository;
-
 
 import java.util.List;
 
@@ -34,14 +33,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getUsers(List<Long> id, Integer from, Integer size) {
+    public List<UserDto> getUsers(List<Long> ids, Integer from, Integer size) {
 
         PageRequest pageRequest = PageRequest.of(from / size, size);
 
-        if (id == null) {
+        if (ids == null) {
             return UserMapper.returnUserDtoList(userRepository.findAll(pageRequest));
         } else {
-            return UserMapper.returnUserDtoList(userRepository.findByIdInOrderByIdAsc(id, pageRequest));
+            return UserMapper.returnUserDtoList(userRepository.findByIdInOrderByIdAsc(ids, pageRequest));
         }
     }
 

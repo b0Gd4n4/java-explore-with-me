@@ -5,37 +5,38 @@ import ru.practicum.category.CategoryMapper;
 import ru.practicum.category.model.Category;
 import ru.practicum.event.dto.EventCreateDto;
 import ru.practicum.event.dto.EventDto;
-import ru.practicum.event.model.Event;
 import ru.practicum.event.dto.EventShortDto;
+import ru.practicum.event.model.Event;
 import ru.practicum.event.model.Location;
-import ru.practicum.user.model.User;
 import ru.practicum.user.UserMapper;
+import ru.practicum.user.model.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 import static ru.practicum.enums.State.PENDING;
 
 
 @UtilityClass
 public class EventMapper {
 
-    public Event returnEvent(EventCreateDto eventNewDto, Category category, Location location, User user) {
+    public Event returnEvent(EventCreateDto eventCreateDto, Category category, Location location, User user) {
         Event event = Event.builder()
-                .annotation(eventNewDto.getAnnotation())
+                .annotation(eventCreateDto.getAnnotation())
                 .category(category)
-                .description(eventNewDto.getDescription())
-                .eventDate(eventNewDto.getEventDate())
+                .description(eventCreateDto.getDescription())
+                .eventDate(eventCreateDto.getEventDate())
                 .initiator(user)
                 .location(location)
-                .paid(eventNewDto.getPaid())
-                .participantLimit(eventNewDto.getParticipantLimit())
-                .requestModeration(eventNewDto.getRequestModeration())
+                .paid(eventCreateDto.getPaid())
+                .participantLimit(eventCreateDto.getParticipantLimit())
+                .requestModeration(eventCreateDto.getRequestModeration())
                 .createdOn(LocalDateTime.now())
                 .views(0L)
                 .state(PENDING)
                 .confirmedRequests(0L)
-                .title(eventNewDto.getTitle())
+                .title(eventCreateDto.getTitle())
                 .build();
         return event;
     }

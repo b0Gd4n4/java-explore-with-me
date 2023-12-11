@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
-
-
 @Service
 public class StatsClient extends BaseClient {
 

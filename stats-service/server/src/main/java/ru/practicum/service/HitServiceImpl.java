@@ -23,7 +23,7 @@ public class HitServiceImpl implements HitService {
 
     @Transactional
     @Override
-    public void addHit(HitDto hitDto) {
+    public void createHit(HitDto hitDto) {
 
         hitRepository.save(HitMapper.returnHit(hitDto));
     }

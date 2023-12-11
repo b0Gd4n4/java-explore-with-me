@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+
 import ru.practicum.event.dto.*;
-
-
 import ru.practicum.event.service.EventService;
 import ru.practicum.request.dto.RequestDto;
 
@@ -26,11 +26,11 @@ public class PrivateEventController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public EventDto createEvent(@Valid @RequestBody EventCreateDto eventNewDto,
-                                @PathVariable Long userId) {
+    public EventDto addEvent(@Valid @RequestBody EventCreateDto eventCreateDto,
+                                 @PathVariable Long userId) {
 
-        log.info("User id {}, add Event {} ", userId, eventNewDto.getAnnotation());
-        return eventService.createEvent(userId, eventNewDto);
+        log.info("User id {}, add Event {} ", userId, eventCreateDto.getAnnotation());
+        return eventService.createEvent(userId, eventCreateDto);
     }
 
     @GetMapping
@@ -74,8 +74,8 @@ public class PrivateEventController {
     @PatchMapping("/{eventId}/requests")
     @ResponseStatus(value = HttpStatus.OK)
     private UpdateDtoResult updateStatusRequestsForEventIdByUserId(@PathVariable Long userId,
-                                                                   @PathVariable Long eventId,
-                                                                   @RequestBody UpdateDtoRequest requestDto) {
+                                                                          @PathVariable Long eventId,
+                                                                          @RequestBody UpdateDtoRequest requestDto) {
 
         log.info("Update status request for event id{}, by user id{}.", eventId,  userId);
         return eventService.updateStatusRequestsForEventIdByUserId(requestDto, userId, eventId);

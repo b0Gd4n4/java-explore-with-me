@@ -21,10 +21,10 @@ public class AdmCompilationController {
 
     @PostMapping
     @ResponseStatus(value = HttpStatus.CREATED)
-    public CompilationDto createCompilation(@Valid @RequestBody CompilationCreateDto compilationNewDto) {
+    public CompilationDto addCompilation(@Valid @RequestBody CompilationCreateDto compilationCreateDto) {
 
-        log.info("Add Compilation {} ", compilationNewDto.getTitle());
-        return compilationService.createCompilation(compilationNewDto);
+        log.info("Add Compilation {} ", compilationCreateDto.getTitle());
+        return compilationService.createCompilation(compilationCreateDto);
     }
 
     @DeleteMapping("/{compId}")
