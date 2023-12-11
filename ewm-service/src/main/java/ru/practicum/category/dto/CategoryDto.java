@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CategoryDto {
-    
+
     Long id;
 
     @Size(max = 50, message = "name must be less than 50")
