@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.HitMapper;
 import ru.practicum.dto.HitDto;
 import ru.practicum.dto.StatsDto;
+import ru.practicum.exception.ValidationException;
 import ru.practicum.repository.HitRepository;
 
 import java.time.LocalDateTime;
@@ -22,13 +23,19 @@ public class HitServiceImpl implements HitService {
 
     @Transactional
     @Override
-    public void addHit(HitDto hitDto) {
+    public void createHit(HitDto hitDto) {
 
         hitRepository.save(HitMapper.returnHit(hitDto));
     }
 
     @Override
-    public List<StatsDto> findStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
+    public List<StatsDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
+
+        if (start != null && end != null) {
+            if (start.isAfter(end)) {
+                throw new ValidationException("Start must be after End");
+            }
+        }
 
         if (uris == null || uris.isEmpty()) {
             if (unique) {
