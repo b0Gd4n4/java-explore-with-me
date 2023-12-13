@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
+import ru.practicum.comments.model.Comment;
+import ru.practicum.comments.repository.CommentRepository;
 import ru.practicum.compilation.model.Compilation;
 import ru.practicum.compilation.repository.CompilationRepository;
 import ru.practicum.event.model.Event;
@@ -29,6 +31,7 @@ public class ReceiveServiceImpl implements ReceiveService {
     private final EventRepository eventRepository;
     private final RequestRepository requestRepository;
     private final CompilationRepository compilationRepository;
+    private final CommentRepository commentRepository;
 
     @Override
     public User getUserOrNotFound(Long userId) {
@@ -87,6 +90,18 @@ public class ReceiveServiceImpl implements ReceiveService {
             throw new NotFoundException(Compilation.class, "Compilation id " + compId + " not found.");
         } else {
             return compilation.get();
+        }
+    }
+
+    @Override
+    public Comment getCommentOrNotFound(Long commentId) {
+
+        Optional<Comment> comment = commentRepository.findById(commentId);
+
+        if (comment.isEmpty()) {
+            throw new NotFoundException(Comment.class, "Comment id " + commentId + " not found.");
+        } else {
+            return comment.get();
         }
     }
 

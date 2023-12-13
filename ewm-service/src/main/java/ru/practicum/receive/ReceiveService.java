@@ -2,6 +2,7 @@ package ru.practicum.receive;
 
 
 import ru.practicum.category.model.Category;
+import ru.practicum.comments.model.Comment;
 import ru.practicum.compilation.model.Compilation;
 import ru.practicum.event.model.Event;
 import ru.practicum.request.model.Request;
@@ -21,6 +22,8 @@ public interface ReceiveService {
     Request getRequestOrNotFound(Long requestId);
 
     Compilation getCompilationOrNotFound(Long compId);
+
+    Comment getCommentOrNotFound(Long commentId);
 
     LocalDateTime parseDate(String date);
 }
